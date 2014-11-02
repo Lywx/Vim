@@ -1,12 +1,12 @@
 Vim
 ===
 
-My starter Vim configuration
+    My vim configuration.
 
 Installation
 ===
 
-git clone git://github.com/Lywx/vim.git  ~/.vim
+    git clone git://github.com/Lywx/vim.git  ~/.vim
 
-ln -s ~/dotfiles/vimrc ~/.vimrc
+    ln -s ~/dotfiles/vimrc ~/.vimrc
 
