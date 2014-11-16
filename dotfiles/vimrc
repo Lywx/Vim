@@ -1,17 +1,19 @@
-""""""""""""""""""""""""""""""""""""""""""
-" Environment Configuration
-""""""""""""""""""""""""""""""""""""""""""
+" Environment Configuration {{{
 set nocompatible
+
 
 " Powerline
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
 
 " Undo History
 set history=700
 set undolevels=700
 
+
 " File encoding
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8                       " saving and encoding
+
 
 " Tab and spaces
 set tabstop=4                                                                  " insert 4 spaces for a tab
@@ -21,60 +23,85 @@ set shiftround                                                                 "
 set expandtab                                                                  " insert spaces by tab char
 set smartindent
 
+
 " Search
 set hlsearch incsearch ignorecase smartcase                                    " case-insensitive search
+
+
+" Fold
+set foldmethod=marker
+
 
 " Completion
 set wildmenu                                                                   " enhanced completion
 
+
 " Clipboard
 set clipboard=unnamed,unnamedplus                                              " use the system clipboard for yank/put/delete
+
 
 " Vimrc
 autocmd! bufwritepost .vimrc source %                                          " automatic reload vimrc on save
 set secure                                                                     " disable unsafe commands in local .vimrc files
 set modeline                                                                   " allow per-file settings via modeline
 
+
 " IO
 set nobackup nowritebackup noswapfile                                          " no backup or swap at save
 set autoread                                                                   " auto reload when file changed
 set hidden                                                                     " don't unload buffer when switching away
 
+
 " Mouse positioning
 set mouse=a                                                                    " enable mouse for all modes settings
 set nomousehide                                                                " don't hide the mouse cursor while typing
+
 
 " Menu
 set laststatus=2                                                               " always show status bar
 set winaltkeys=no                                                              " no alt shortcuts
 
-""""""""""""""""""""""""""""""""""""""""""
-" Control Configuration
-""""""""""""""""""""""""""""""""""""""""""
+" }}}
+" Control Configuration {{{
+
 " Leader key
-let mapleader = ","                                                            " rebind <Leader> to comma
+let mapleader = "\<Space>"
+
+
+" Unbinding arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
 
 " Functional keys
 set pastetoggle=<F2>                                                           " paste (automatic modification) toggle on or off
 nnoremap <F3> :NERDTreeToggle<CR>
 
+
 " Insert empty line
 nnoremap <silent> <space>k :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> <space>j :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
+
 " Backspace
 set backspace=indent,eol,start                                                 " sane backspace
+
 
 " Remove highlight of last search
 nnoremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 
+
 " Quicksave
 nnoremap <C-Z> :update<CR>
+
 
 " Quick quit
 nnoremap <Leader>e :quit<CR>
 nnoremap <Leader>E :qa!<CR>
+
 
 " Vim windows switch
 nnoremap <C-j> <C-w>j
@@ -82,40 +109,66 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+
 " Vim tab switch
 nnoremap <Leader>n <esc>:tabprevious<CR>
 nnoremap <Leader>m <esc>:tabnext<CR>
 
+
 " Sort methods in block
 nnoremap <Leader>s :sort<CR>
+
 
 " Easier block indentation
 vnoremap < <gv
 vnoremap > >gv
 
+
 " Easier formating of paragraph
 vmap Q gq
 nmap Q gqap
 
-""""""""""""""""""""""""""""""""""""""""""
-" Display Configuration
-""""""""""""""""""""""""""""""""""""""""""
+
+" EasyMotition, Dot Repeat
+map f <Plug>(easymotion-fl)
+map F <Plug>(easymotion-Fl)
+map t <Plug>(easymotion-tl)
+map T <Plug>(easymotion-Tl)
+
+" Two character bidirectional with operation repeat
+nmap <Leader>d <Plug>(easymotion-s2)
+omap <Leader>d <Plug>(easymotion-s2)
+
+" N characters searching
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+
+" }}}
+" Display Configuration {{{
+
 " Show whitespace
 " Must be before colorscheme
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
+
 " Automatically delete trailing whitespace
 autocmd BufWritePre *.py :%s/\s\+$//e
+
 
 " Colorscheme
 set t_Co=256
 color wombat256mod
 
+
 " Syntax highlighting
 filetype off
 filetype plugin indent on
 syntax on
+
 
 " Show line number
 set number
@@ -124,51 +177,93 @@ set ruler                                                                      "
 set nowrap                                                                     " don't automatically wrap on load
 set fo-=t                                                                      " don't automatically wrap text when typing
 
+
 " Document display region
 set colorcolumn=80
+
 
 " highlight ColorColumn ctermbg=233                                            " dark color for max length
 set textwidth=80                                                               " length of document
 set scrolloff=10                                                               " scroll the window so we can always see 10 lines around the cursor
 
+
 " Better positioning
 set cursorline                                                                 " highlight the current line
 set cursorcolumn                                                               " highlight the current line
 
-"""""""""""""""""""""""""""""""""""""""""
-" Vundle Configuration
-"""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
+" }}}
+" Vundle Configuration {{{
+
+set rtp+=~/.vim/bundle/Vundle.vim"
 call vundle#begin()
 
-" Vundle
+" Vundle"{{{
 Plugin 'gmarik/Vundle.vim'
+"}}}
+" General {{{
 
-" General
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+
+Plugin 'tpope/vim-repeat'
+
+Plugin 'tpope/vim-eunuch'
+
 Plugin 'Lokaltog/vim-easymotion'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'kien/ctrlp.vim'
+
 Plugin 'Chiel92/vim-autoformat'
 
-" Scala interaction
+Plugin 'xolox/vim-misc'
+
+Plugin 'xolox/vim-easytags'
+
+Plugin 'Townk/vim-autoclose'
+
+Plugin 'Soares/longline.vim'
+
+Plugin 'drmingdrmer/xptemplate'
+
+" }}}
+" Scala interaction {{{
+
 "Plugin 'megaannum/self'
+"
 "Plugin 'megaannum/forms'
+"
 "Plugin 'Shougo/vimproc'
+"
 "Plugin 'Shougo/vimshell'
+"
 "Plugin 'aemoncannon/ensime'
+"
 "Plugin 'megaannum/vimside'
 
-" Python integration
+" }}}
+" Python integration {{{
 Plugin 'klen/python-mode'
+
 Plugin 'vim-scripts/Efficient-python-folding'
+
 "Plugin 'davidhalter/jedi-vim'
+"}}}
 
 call vundle#end()
 
-"""""""""""""""""""""""""""""""""""""""""
-" Plugin Configuration
-"""""""""""""""""""""""""""""""""""""""""
+" }}}
+" Plugin Configuration {{{
+
+" EasyMotion
+
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+" Key settings
+let g:EasyMotion_keys='hklyuiopnm,qwertzxcvbasdgjf;'
+
 
 " CtrlP
 let g:ctrlp_max_height=30
@@ -176,8 +271,11 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
+
 " Python Mode
 let g:pymode_rope = 1
+let g:pymode_rope_goto_definition_bind = '<Leader>g'
+let g:pymode_rope_goto_definition_cmd = 'new'
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pymode_lint = 1
@@ -193,10 +291,14 @@ let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
+
 " Efficient python folding
 set nofoldenable
+
 
 " Forms
 "nunmap <Leader>p
 "nunmap <Leader>m
 "nunmap <Leader>cc
+
+" }}}
