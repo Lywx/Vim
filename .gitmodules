@@ -1,0 +1,6 @@
+[submodule "colors/badwolf.git"]
+	path = colors/badwolf.git
+	url = https://github.com/sjl/badwolf.git
+[submodule "colors/skittles_berry.vim"]
+	path = colors/skittles_berry.vim
+	url = http://github.com/shawncplus/skittles_berry.git

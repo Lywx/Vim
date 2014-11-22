@@ -10,6 +10,9 @@ fi
 
 # User specific aliases and functions
 
+# Don't use C-S to lock
+stty -ixon
+
 # Powerline
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh

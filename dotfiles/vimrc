@@ -1,212 +1,26 @@
-" Environment Configuration {{{
-set nocompatible
+" Vimrc"{{{
 
+" Automatic reload vimrc on save
+autocmd! bufwritepost .vimrc source %
+" Disable unsafe commands in local .vimrc files
+set secure
+" Allow per-file settings via modeline
+set modeline
 
-" Powerline
+"}}}
+" Powerline"{{{
+
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
-
-" Undo History
-set history=700
-set undolevels=700
-
-
-" File encoding
-set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8                       " saving and encoding
-
-
-" Tab and spaces
-set tabstop=4                                                                  " insert 4 spaces for a tab
-set softtabstop=4                                                              " insert 4 spaces for a mixed tab
-set shiftwidth=4                                                               " insert 4 spaces for intentation
-set shiftround                                                                 " round (align) tab
-set expandtab                                                                  " insert spaces by tab char
-set smartindent
-
-
-" Search
-set hlsearch incsearch ignorecase smartcase                                    " case-insensitive search
-
-
-" Fold
-set foldmethod=marker
-
-
-" Completion
-set wildmenu                                                                   " enhanced completion
-
-
-" Clipboard
-set clipboard=unnamed,unnamedplus                                              " use the system clipboard for yank/put/delete
-
-
-" Vimrc
-autocmd! bufwritepost .vimrc source %                                          " automatic reload vimrc on save
-set secure                                                                     " disable unsafe commands in local .vimrc files
-set modeline                                                                   " allow per-file settings via modeline
-
-
-" IO
-set nobackup nowritebackup noswapfile                                          " no backup or swap at save
-set autoread                                                                   " auto reload when file changed
-set hidden                                                                     " don't unload buffer when switching away
-
-
-" Mouse positioning
-set mouse=a                                                                    " enable mouse for all modes settings
-set nomousehide                                                                " don't hide the mouse cursor while typing
-
-
-" Menu
-set laststatus=2                                                               " always show status bar
-set winaltkeys=no                                                              " no alt shortcuts
-
-" }}}
-" Control Configuration {{{
-
-" Leader key
-let mapleader = "\<Space>"
-
-
-" Unbinding arrow keys
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-
-
-" Functional keys
-set pastetoggle=<F2>                                                           " paste (automatic modification) toggle on or off
-nnoremap <F3> :NERDTreeToggle<CR>
-
-
-" Insert empty line
-nnoremap <silent> <space>k :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
-nnoremap <silent> <space>j :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
-
-
-" Backspace
-set backspace=indent,eol,start                                                 " sane backspace
-
-
-" Remove highlight of last search
-nnoremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-
-
-" Quicksave
-nnoremap <C-Z> :update<CR>
-
-
-" Quick quit
-nnoremap <Leader>e :quit<CR>
-nnoremap <Leader>E :qa!<CR>
-
-
-" Vim windows switch
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-
-" Vim tab switch
-nnoremap <Leader>n <esc>:tabprevious<CR>
-nnoremap <Leader>m <esc>:tabnext<CR>
-
-
-" Sort methods in block
-nnoremap <Leader>s :sort<CR>
-
-
-" Easier block indentation
-vnoremap < <gv
-vnoremap > >gv
-
-
-" Easier formating of paragraph
-vmap Q gq
-nmap Q gqap
-
-
-" EasyMotition, Dot Repeat
-map f <Plug>(easymotion-fl)
-map F <Plug>(easymotion-Fl)
-map t <Plug>(easymotion-tl)
-map T <Plug>(easymotion-Tl)
-
-" Two character bidirectional with operation repeat
-nmap <Leader>d <Plug>(easymotion-s2)
-omap <Leader>d <Plug>(easymotion-s2)
-
-" N characters searching
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-
-map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
-
-" }}}
-" Display Configuration {{{
-
-" Show whitespace
-" Must be before colorscheme
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-
-" Automatically delete trailing whitespace
-autocmd BufWritePre *.py :%s/\s\+$//e
-
-
-" Colorscheme
-set t_Co=256
-color wombat256mod
-
-
-" Syntax highlighting
-filetype off
-filetype plugin indent on
-syntax on
-
-
-" Show line number
-set number
-set relativenumber
-set ruler                                                                      " show cursor position in status bar
-set nowrap                                                                     " don't automatically wrap on load
-set fo-=t                                                                      " don't automatically wrap text when typing
-
-
-" Document display region
-set colorcolumn=80
-
-
-" highlight ColorColumn ctermbg=233                                            " dark color for max length
-set textwidth=80                                                               " length of document
-set scrolloff=10                                                               " scroll the window so we can always see 10 lines around the cursor
-
-
-" Better positioning
-set cursorline                                                                 " highlight the current line
-set cursorcolumn                                                               " highlight the current line
-
-" }}}
-" Vundle Configuration {{{
+"}}}
+" Vundle"{{{
 
 set rtp+=~/.vim/bundle/Vundle.vim"
 call vundle#begin()
 
-" Vundle"{{{
 Plugin 'gmarik/Vundle.vim'
-"}}}
-" General {{{
 
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'tpope/vim-repeat'
-
-Plugin 'tpope/vim-eunuch'
+" Browsing {{{
 
 Plugin 'Lokaltog/vim-easymotion'
 
@@ -214,19 +28,46 @@ Plugin 'scrooloose/nerdtree'
 
 Plugin 'kien/ctrlp.vim'
 
+"}}}
+" Editing {{{
+
+" Dot repeat
+Plugin 'tpope/vim-repeat'
+
+" Auto format
 Plugin 'Chiel92/vim-autoformat'
 
-Plugin 'xolox/vim-misc'
+" Align
+Plugin 'junegunn/vim-easy-align'
 
-Plugin 'xolox/vim-easytags'
-
+" Brace autoclose
 Plugin 'Townk/vim-autoclose'
 
+" Tags
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+
+" Wrap
 Plugin 'Soares/longline.vim'
 
-Plugin 'drmingdrmer/xptemplate'
+"}}}
+" SVC {{{
 
-" }}}
+" Diff merging tool
+Plugin 'sjl/splice.vim'
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+
+"}}}
+" CMD {{{
+
+" unix cmd wrapper
+Plugin 'tpope/vim-eunuch'
+
+" interactive commands
+Plugin 'oplatek/Conque-Shell'
+
+"}}}
 " Scala interaction {{{
 
 "Plugin 'megaannum/self'
@@ -243,6 +84,7 @@ Plugin 'drmingdrmer/xptemplate'
 
 " }}}
 " Python integration {{{
+
 Plugin 'klen/python-mode'
 
 Plugin 'vim-scripts/Efficient-python-folding'
@@ -250,10 +92,28 @@ Plugin 'vim-scripts/Efficient-python-folding'
 "Plugin 'davidhalter/jedi-vim'
 "}}}
 
+Plugin 'drmingdrmer/xptemplate'
+
 call vundle#end()
 
-" }}}
+"}}}
+
+filetype on
+filetype plugin on
+filetype indent on
+
+" Load custom settings
+source ~/.vim/startup/scripts.vim
+source ~/.vim/startup/colors.vim
+source ~/.vim/startup/mappings.vim
+source ~/.vim/startup/settings.vim
+
 " Plugin Configuration {{{
+
+" NERDTree
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+let NERDTreeAutoCenter=1
 
 " EasyMotion
 
@@ -280,11 +140,15 @@ let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
-let g:pymode_lint_write = 1                                                    " pylint check on save
-let g:pymode_virtualenv = 1                                                    " support virtualenv
-let g:pymode_breakpoint = 1                                                    " enable breakpoints plugin
+" Pylint check on save
+let g:pymode_lint_write = 1
+" Support virtualenv
+let g:pymode_virtualenv = 1
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_key = '<leader>b'
-let g:pymode_syntax = 1                                                        " syntax highlighting
+" Syntax highlighting
+let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
