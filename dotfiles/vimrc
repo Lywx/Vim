@@ -26,7 +26,11 @@ Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'scrooloose/nerdtree'
 
+Plugin 'wesQ3/vim-windowswap'
+
 Plugin 'kien/ctrlp.vim'
+
+Plugin 'majutsushi/tagbar'
 
 "}}}
 " Editing {{{
@@ -68,7 +72,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'oplatek/Conque-Shell'
 
 "}}}
-" Scala interaction {{{
+" Scala Interaction {{{
 
 "Plugin 'megaannum/self'
 "
@@ -83,14 +87,20 @@ Plugin 'oplatek/Conque-Shell'
 "Plugin 'megaannum/vimside'
 
 " }}}
-" Python integration {{{
+" Python Integration {{{
 
 Plugin 'klen/python-mode'
 
 Plugin 'vim-scripts/Efficient-python-folding'
 
 "Plugin 'davidhalter/jedi-vim'
+
 "}}}
+" Julia Integration {{{
+
+Plugin 'JuliaLang/julia-vim'
+
+" }}}
 
 Plugin 'drmingdrmer/xptemplate'
 
@@ -125,6 +135,10 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys='hklyuiopnm,qwertzxcvbasdgjf;'
 
 
+" Vim Window Swap
+" Prevent default bindings
+let g:windowswap_map_keys = 0
+
 " CtrlP
 let g:ctrlp_max_height=30
 set wildignore+=*.pyc
@@ -133,20 +147,18 @@ set wildignore+=*/coverage/*
 
 
 " Python Mode
-let g:pymode_rope = 1
-let g:pymode_rope_goto_definition_bind = '<Leader>g'
-let g:pymode_rope_goto_definition_cmd = 'new'
 let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+let g:pymode_motion = 1
 let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_checker = ['pyflakes', 'pep8']
+let g:pymode_rope = 1
+let g:pymode_rope_goto_definition_cmd = 'new'
 " Pylint check on save
 let g:pymode_lint_write = 1
 " Support virtualenv
 let g:pymode_virtualenv = 1
 " Enable breakpoints plugin
 let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
 " Syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
@@ -159,10 +171,8 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Efficient python folding
 set nofoldenable
 
-
-" Forms
-"nunmap <Leader>p
-"nunmap <Leader>m
-"nunmap <Leader>cc
+" ConqueTerm
+let g:ConqueTerm_Color = 1
+let g:ConqueTerm_FastMode = 0
 
 " }}}

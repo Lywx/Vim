@@ -28,7 +28,9 @@ no <leader>n :tabnew<cr>
 " Paste (automatic modification) toggle on or off
 set pastetoggle=<F2>
 
-nnoremap <F3> :NERDTreeToggle<cr>
+noremap <F3> :NERDTreeToggle<cr>
+noremap <F4> :TagbarToggle<cr>
+noremap <F5> :ConqueTermSplit zsh<cr>
 
 "}}}
 " Jump auto-center"{{{
@@ -63,7 +65,7 @@ vnoremap <c-n> :nohl<cr>
 
 
 " Quicksave
-nnoremap <c-z> :update<cr>
+nnoremap <c-s> :update<cr>
 
 
 " Quick quit
@@ -76,6 +78,11 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+
+" Swap windows
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
 
 
 " Sort methods in block
@@ -120,3 +127,20 @@ map N <Plug>(easymotion-prev)
 
 " Open tag in new tab
 map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
+
+
+" Python-mode
+let g:pymode_breakpoint_key             = '<leader>pb'
+
+let g:pymode_doc_key                    = 'K'
+let g:pymode_rope_show_doc_bind         = '<leader>K'
+
+let g:pymode_run_bind                   = '<leader>prs'
+
+let g:pymode_rope_autoimport_bind       = '<leader>pai'
+let g:pymode_rope_organize_imports_bind = '<leader>poi'
+
+let g:pymode_rope_goto_definition_bind  = '<leader>pg'
+let g:pymode_rope_rename_bind           = '<leader>prr'
+let g:pymode_rope_rename_module_bind    = '<leader>prm'
+
