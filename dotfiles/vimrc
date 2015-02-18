@@ -13,96 +13,45 @@ set modeline
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 "}}}
-" Vundle"{{{
+" Vundle "{{{
 
 set rtp+=~/.vim/bundle/Vundle.vim"
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" Browsing {{{
-
+" Browsing
 Plugin 'Lokaltog/vim-easymotion'
-
 Plugin 'scrooloose/nerdtree'
-
 Plugin 'wesQ3/vim-windowswap'
-
 Plugin 'kien/ctrlp.vim'
-
 Plugin 'majutsushi/tagbar'
 
-"}}}
-" Editing {{{
-
-" Dot repeat
-Plugin 'tpope/vim-repeat'
-
-" Auto format
-Plugin 'Chiel92/vim-autoformat'
-
-" Align
-Plugin 'junegunn/vim-easy-align'
-
-" Brace autoclose
-Plugin 'Townk/vim-autoclose'
-
-" Tags
+" Editing
+Plugin 'tpope/vim-repeat'                  "  Dot Repeat
+Plugin 'Chiel92/vim-autoformat'            "  Auto Format
+Plugin 'junegunn/vim-easy-align'           "  Auto Align
+Plugin 'Townk/vim-autoclose'               "  Auto Brace Close
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-easytags'                "  Tags
+Plugin 'Soares/longline.vim'               "  Wrapping
+Plugin 'drmingdrmer/xptemplate'            "  Template
 
-" Wrap
-Plugin 'Soares/longline.vim'
+" Git
+Plugin 'sjl/splice.vim'                    "  Git Diff Merging Tool
+Plugin 'tpope/vim-fugitive'                "  Git Wrapper
 
-"}}}
-" SVC {{{
+" Terminal
+Plugin 'tpope/vim-eunuch'                  "  Terminal Wrapper
+Plugin 'oplatek/Conque-Shell'              "  Terminal Embedding
 
-" Diff merging tool
-Plugin 'sjl/splice.vim'
-" Git wrapper
-Plugin 'tpope/vim-fugitive'
-
-"}}}
-" CMD {{{
-
-" unix cmd wrapper
-Plugin 'tpope/vim-eunuch'
-
-" interactive commands
-Plugin 'oplatek/Conque-Shell'
-
-"}}}
-" Scala Interaction {{{
-
-"Plugin 'megaannum/self'
-"
-"Plugin 'megaannum/forms'
-"
-"Plugin 'Shougo/vimproc'
-"
-"Plugin 'Shougo/vimshell'
-"
-"Plugin 'aemoncannon/ensime'
-"
-"Plugin 'megaannum/vimside'
-
-" }}}
-" Python Integration {{{
-
+" Python
 Plugin 'klen/python-mode'
-
 Plugin 'vim-scripts/Efficient-python-folding'
-
 "Plugin 'davidhalter/jedi-vim'
 
-"}}}
-" Julia Integration {{{
-
+" Julia
 Plugin 'JuliaLang/julia-vim'
-
-" }}}
-
-Plugin 'drmingdrmer/xptemplate'
 
 call vundle#end()
 
@@ -113,66 +62,18 @@ filetype plugin on
 filetype indent on
 
 " Load custom settings
-source ~/.vim/startup/scripts.vim
-source ~/.vim/startup/colors.vim
-source ~/.vim/startup/mappings.vim
-source ~/.vim/startup/settings.vim
+source ~/.vim/custom/scripts.vim
+source ~/.vim/custom/colors.vim
+source ~/.vim/custom/mappings.vim
+source ~/.vim/custom/settings.vim
 
-" Plugin Configuration {{{
+" Load custom plugin settings
+source ~/.vim/custom/plugins/nerdtree.vim
+source ~/.vim/custom/plugins/easymotion.vim
+source ~/.vim/custom/plugins/windowswap.vim
+source ~/.vim/custom/plugins/ctrlp.vim
 
-" NERDTree
-let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
-let NERDTreeAutoCenter=1
+source ~/.vim/custom/plugins/conqueterm.vim
 
-" EasyMotion
-
-" Disable default mappings
-let g:EasyMotion_do_mapping = 0
-" Turn on case sensitive feature
-let g:EasyMotion_smartcase = 1
-" Key settings
-let g:EasyMotion_keys='hklyuiopnm,qwertzxcvbasdgjf;'
-
-
-" Vim Window Swap
-" Prevent default bindings
-let g:windowswap_map_keys = 0
-
-" CtrlP
-let g:ctrlp_max_height=30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-
-
-" Python Mode
-let g:pymode_doc = 1
-let g:pymode_motion = 1
-let g:pymode_lint = 1
-let g:pymode_lint_checker = ['pyflakes', 'pep8']
-let g:pymode_rope = 1
-let g:pymode_rope_goto_definition_cmd = 'new'
-" Pylint check on save
-let g:pymode_lint_write = 1
-" Support virtualenv
-let g:pymode_virtualenv = 1
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-" Syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-
-" Efficient python folding
-set nofoldenable
-
-" ConqueTerm
-let g:ConqueTerm_Color = 1
-let g:ConqueTerm_FastMode = 0
-
-" }}}
+source ~/.vim/custom/plugins/python-mode.vim
+source ~/.vim/custom/plugins/efficient-python-folding.vim

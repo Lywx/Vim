@@ -10,7 +10,7 @@ fi
 
 # User specific aliases and functions
 
-# Don't use C-S to lock
+# Terminal disable c-s to lock
 stty -ixon
 
 # Powerline

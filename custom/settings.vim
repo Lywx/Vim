@@ -108,7 +108,7 @@ set scrolloff=10
 " Highlight the current row
 set cursorline
 " Highlight the current column
-" set cursorcolumn
+"set cursorcolumn
 
 
 " Tags
