@@ -8,7 +8,7 @@ Installation
 
     git clone git://github.com/Lywx/vim.git  ~/.vim
 
-    cd ~/.vim; ./install.sh
+    cd ~/.vim; sh ./install.sh
     
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     
