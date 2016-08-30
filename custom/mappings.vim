@@ -55,28 +55,32 @@ set backspace=indent,eol,start
 " Sessions {{{
 
 " Remove highlight of last search
-nnoremap <c-n> :nohl<cr>
-vnoremap <c-n> :nohl<cr>
+nnoremap <c-.> :nohl<cr>
+vnoremap <c-.> :nohl<cr>
 
 " Quick Save
 nnoremap <c-s> :update<cr>
 
 " Quick Exit
-nnoremap <leader>e :quit<cr>
-nnoremap <leader>E :qa!<cr>
+nnoremap <c-x> :quit<cr>
+nnoremap <leader>x :qa!<cr>
 
 " }}}
-" Tabs {{{
+" Tabs {{{"{{{
 
 " Switch Tab
-no <leader>h :tabprevious<cr>
-no <leader>l :tabnext<cr>
+no <c-u> :tabprevious<cr>
+no <c-i> :tabnext<cr>
+
+" Move Tab
+no <c-y> :tabmove -1<cr>
+no <c-o> :tabmove +1<cr>
 
 " Create Tab
-no <leader>n :tabnew<cr>
+no <c-n> :tabnew<cr>
 
 " Open in New Tab
-map <leader>\ :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
+map <c-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 
 " }}}
 " Windows {{{
@@ -91,7 +95,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
 
-" }}}
+" }}}"}}}
 " Blocks {{{
 
 " Sort methods in block
@@ -115,7 +119,7 @@ map t <Plug>(easymotion-tl)
 map T <Plug>(easymotion-Tl)
 
 " N characters searching
-map  / <Plug>(easymotion-sn)
+map  / <Plug>(easymotion-sn)"{{{"}}}
 omap / <Plug>(easymotion-tn)
 
 map n <Plug>(easymotion-next)
@@ -136,18 +140,18 @@ vmap <leader>= <Plug>(EasyAlign)
 
 " Python-mode {{{
 
-let g:pymode_breakpoint_key             = '<leader>pb'
+" let g:pymode_breakpoint_key             = '<leader>pb'
 
-let g:pymode_doc_key                    = 'K'
-let g:pymode_rope_show_doc_bind         = '<leader>K'
+" let g:pymode_doc_key                    = 'K'
+" let g:pymode_rope_show_doc_bind         = '<leader>K'
 
-let g:pymode_run_bind                   = '<leader>prs'
+" let g:pymode_run_bind                   = '<leader>prs'
 
-let g:pymode_rope_autoimport_bind       = '<leader>pai'
-let g:pymode_rope_organize_imports_bind = '<leader>poi'
+" let g:pymode_rope_autoimport_bind       = '<leader>pai'
+" let g:pymode_rope_organize_imports_bind = '<leader>poi'
 
-let g:pymode_rope_goto_definition_bind  = '<leader>pg'
-let g:pymode_rope_rename_bind           = '<leader>prr'
-let g:pymode_rope_rename_module_bind    = '<leader>prm'
+" let g:pymode_rope_goto_definition_bind  = '<leader>pg'
+" let g:pymode_rope_rename_bind           = '<leader>prr'
+" let g:pymode_rope_rename_module_bind    = '<leader>prm'
 
 " }}}

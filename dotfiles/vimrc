@@ -46,12 +46,9 @@ Plugin 'tpope/vim-eunuch'                  "  Terminal Wrapper
 Plugin 'oplatek/Conque-Shell'              "  Terminal Embedding
 
 " Python
-Plugin 'klen/python-mode'
-Plugin 'vim-scripts/Efficient-python-folding'
-"Plugin 'davidhalter/jedi-vim'
-
-" Julia
-Plugin 'JuliaLang/julia-vim'
+" Plugin 'klen/python-mode'
+" Plugin 'vim-scripts/Efficient-python-folding'
+" Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 
