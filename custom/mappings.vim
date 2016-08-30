@@ -119,7 +119,7 @@ map t <Plug>(easymotion-tl)
 map T <Plug>(easymotion-Tl)
 
 " N characters searching
-map  / <Plug>(easymotion-sn)"{{{"}}}
+map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 map n <Plug>(easymotion-next)
