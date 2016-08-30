@@ -12,11 +12,8 @@ Installation
 4. Run:
 
     git clone https://github.com/Lywx/vim.git  ~/.vim
-
     cd ~/.vim
-    
     sh ./install.sh
-    
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     
 5. Launch vim and run :PluginInstall
