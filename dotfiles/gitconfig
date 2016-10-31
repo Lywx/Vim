@@ -4,7 +4,6 @@
 	name = Wuxiang Lin
 	email = linwx_xin@hotmail.com
 [diff]
-	external = git_diff_wrapper
 [merge]
     tool = splice
 [mergetool "splice"]
